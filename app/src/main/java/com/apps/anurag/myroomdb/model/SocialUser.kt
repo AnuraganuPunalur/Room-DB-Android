@@ -3,42 +3,53 @@ package com.apps.anurag.myroomdb.model
 import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
+import android.support.annotation.NonNull
 
 /**
  *Created by anurag on 19,February,2019
  */
 @Entity(tableName = "social_user")
-class SocialUser {
+class SocialUser(
 
+    @ColumnInfo(name = "platform_name")
+    private var socialPlatForm: String?,
+    @ColumnInfo(name = "social_name")
+    private var socialName: String?
+
+) {
+
+    @NonNull
     @PrimaryKey (autoGenerate = true)
     private var id : Int = 0
 
-    @ColumnInfo (name = "platform_name")
-    private var socialPlatForm : String? = null
+    fun getSocialPlatForm() : String?{
 
-    @ColumnInfo (name = "social_name")
-    private var socialName : String? = null
+       return socialPlatForm
+   }
 
-    constructor(socialPlatForm: String?, socialName: String?) {
+//    fun setSocialPlatForm(socialPlatform : String){
+//
+//        this.socialPlatForm = socialPlatform
+//    }
 
-        this.socialPlatForm = socialPlatForm
-        this.socialName = socialName
-    }
-
-
-    private fun getSocialPlatform() : String?{
-
-        return socialPlatForm
-    }
-
-    private fun getSocialName() : String?{
+     fun getSocialName() : String?{
 
         return socialName
     }
 
-    private fun getId() : Int{
+//    fun setSocialName(socialName : String){
+//
+//        this.socialName = socialName
+//    }
+
+     fun getId() : Int{
 
         return id
+    }
+
+    fun setId(id : Int){
+
+        this.id = id
     }
 
 }
