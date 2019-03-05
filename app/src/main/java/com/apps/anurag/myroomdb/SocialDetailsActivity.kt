@@ -68,11 +68,9 @@ class SocialDetailsActivity : BaseActivity() , EditEntryListener {
 
     override fun onEditClicked(id: String) {
 
-        toast(id)
 
         showDialog(id)
 
-        //editEntry(id)
     }
 
 
@@ -117,6 +115,7 @@ class SocialDetailsActivity : BaseActivity() , EditEntryListener {
         update.setOnClickListener {
 
             editEntry(id,platform.text.toString(),userName.text.toString())
+            dialog.dismiss()
         }
 
 
