@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MyRoomDB</string>
+    <string name="field_empty_error">Field cannot be empty</string>
 </resources>

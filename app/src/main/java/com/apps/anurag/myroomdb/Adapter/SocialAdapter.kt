@@ -6,13 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.apps.anurag.myroomdb.BR
+import com.apps.anurag.myroomdb.Interfaces.EditEntryListener
 import com.apps.anurag.myroomdb.databinding.RecyclerSocialDataBinding
 import com.apps.anurag.myroomdb.model.SocialUser
 
 /**
  *Created by anurag on 25,February,2019
  */
-class SocialAdapter(var context : Context,var socialList : List<SocialUser>) : RecyclerView.Adapter<SocialAdapter.SocialHolder>() {
+class SocialAdapter(var context : Context,var socialList : List<SocialUser>,var editEntryListener: EditEntryListener) : RecyclerView.Adapter<SocialAdapter.SocialHolder>() {
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, p1: Int): SocialHolder {
 
@@ -28,6 +29,10 @@ class SocialAdapter(var context : Context,var socialList : List<SocialUser>) : R
     override fun onBindViewHolder(holder: SocialHolder, pos: Int) {
 
         holder.setBinding(socialList[pos])
+        holder.socialDataBinding.ivEditDB.setOnClickListener {
+
+            editEntryListener.onEditClicked(socialList[pos].getId().toString())
+        }
     }
 
     class SocialHolder(var socialDataBinding: RecyclerSocialDataBinding) :
@@ -41,7 +46,7 @@ class SocialAdapter(var context : Context,var socialList : List<SocialUser>) : R
         }
 
 
-        override fun onClick(p0: View?) {
+        override fun onClick(view: View?) {
 
 
         }
